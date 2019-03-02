@@ -1,11 +1,11 @@
 {
     "name": "electric-vehicles-lib-reborn",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "title": "Electric Vehicles Lib: Reborn",
     "author": ".-PiteR-.",
     "homepage": "https://github.com/March3wQa/Electric-Vehicles-Lib-Reborn",
     "description": "Contains all the support code that allows for electric vehicles and their recharging. Powers the the Electric Vehicles: Reborn mod. Based on mknejp's Electric Vehicles mod",
-    "factorio_version": "0.16",
+    "factorio_version": "0.17",
     "dependencies": ["base >= 0.16.51"],
     "license": "MIT"
   }
