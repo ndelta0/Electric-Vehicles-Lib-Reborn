@@ -34,6 +34,7 @@ local fuel_tick
 local handle_train_state_change
 local on_entity_removed
 local on_train_removed
+local on_entity_added
 local read_equipment
 local recover_energy
 local update_equipment
@@ -333,15 +334,26 @@ on_entity_removed = function(entity)
   end
 end
 
+on_entity_added = function(entity)
+  if(entity and entity.valid) then
+    if(vehicle_types[entity.type] and entity.grid) then
+      global.vehicles[entity.unit_number] = entity
+      update_equipment(entity.unit_number, entity.grid)
+    end
+  end
+end
+
 -- Event entry points
 -------------------------------------------------------------------------------
 
 function on_built_entity(event)
   local entity = event.created_entity
-  if(vehicle_types[entity.type] and entity.grid) then
-    global.vehicles[entity.unit_number] = entity
-    update_equipment(entity.unit_number, entity.grid)
-  end
+  on_entity_added(entity)
+end
+
+function script_raised_built(event)
+  local entity = event.entity  -- script_raised has different structure than on_built
+  on_entity_added(entity)
 end
 
 function on_entity_died(event)

@@ -37,6 +37,7 @@ script.on_load(on_load)
 script.on_configuration_changed(on_configuration_changed)
 
 script.on_event(defines.events.on_built_entity, on_built_entity)
+script.on_event(defines.events.script_raised_built, script_raised_built)
 script.on_event(defines.events.on_entity_died, on_entity_died)
 script.on_event(defines.events.on_player_placed_equipment, on_player_placed_equipment)
 script.on_event(defines.events.on_player_removed_equipment, on_player_removed_equipment)
