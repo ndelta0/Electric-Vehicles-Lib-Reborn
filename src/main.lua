@@ -347,18 +347,21 @@ end
 -------------------------------------------------------------------------------
 
 function on_built_entity(event)
-  local entity = event.created_entity
-  on_entity_added(entity)
+  on_entity_added(event.created_entity)
 end
 
 function script_raised_built(event)
-  local entity = event.entity  -- script_raised has different structure than on_built
-  on_entity_added(entity)
+  on_entity_added(event.entity) -- script_raised has different structure than on_built_entity
 end
 
 function on_entity_died(event)
   on_entity_removed(event.entity)
 end
+
+function script_raised_destroy(event)
+  on_entity_removed(event.entity)
+end
+  
 
 function on_player_placed_equipment(event)
   for unit, entity in pairs(global.vehicles) do
